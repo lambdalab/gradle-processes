@@ -1,15 +1,15 @@
 def javaApiUrl = 'http://docs.oracle.com/javase/1.7.0/docs/api'
 def groovyApiUrl = 'http://groovy.codehaus.org/gapi/'
 
-tasks.withType(Javadoc) {
-    options.links(javaApiUrl, groovyApiUrl)
-}
-
-tasks.withType(Groovydoc) {
-    [javaApiUrl, groovyApiUrl].each {
-        link(it, *(new URL("$it/package-list").text.tokenize("\n")))
-    }
-}
+//tasks.withType(Javadoc) {
+//    options.links(javaApiUrl, groovyApiUrl)
+//}
+//
+//tasks.withType(Groovydoc) {
+//    [javaApiUrl, groovyApiUrl].each {
+//        link(it, *(new URL("$it/package-list").text.tokenize("\n")))
+//    }
+//}
 
 task javadocJar(type: Jar, dependsOn: [javadoc, groovydoc]) {
     classifier = 'javadoc'
@@ -22,4 +22,4 @@ task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
 }
 
-build.dependsOn javadocJar, sourcesJar
+//build.dependsOn javadocJar, sourcesJar

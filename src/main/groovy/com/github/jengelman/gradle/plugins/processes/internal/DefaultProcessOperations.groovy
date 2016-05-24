@@ -3,10 +3,12 @@ package com.github.jengelman.gradle.plugins.processes.internal
 import com.github.jengelman.gradle.plugins.processes.MultipleProcessException
 import com.github.jengelman.gradle.plugins.processes.ProcessOperations
 import com.github.jengelman.gradle.plugins.processes.ProcessHandle
+import org.gradle.api.Action
 import org.gradle.api.internal.file.FileResolver
 import org.gradle.api.internal.ProcessOperations as GradleProcessOperations
 import org.gradle.internal.reflect.Instantiator
 import org.gradle.process.ExecResult
+import org.gradle.process.ExecSpec
 import org.gradle.process.internal.ExecException
 import org.gradle.util.ConfigureUtil
 
@@ -69,15 +71,15 @@ class DefaultProcessOperations implements ProcessOperations {
         }
         return results
     }
-
+    
     @Override
-    ExecResult javaexec(Closure closure) {
-        return processOperations.javaexec(closure)
+    ExecResult exec(Action<? super ExecSpec> action) {
+        return processOperations.exec(action)
     }
 
     @Override
-    ExecResult exec(Closure closure) {
-        return processOperations.exec(closure)
+    ExecResult javaexec(Action<? super ExecSpec> action) {
+        return processOperations.exec(action)
     }
 
     @Override
