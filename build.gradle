@@ -13,9 +13,13 @@ buildscript {
     }
 }
 
+plugins {
+    id "com.jfrog.bintray" version "1.7"
+}
+
 apply plugin: "groovy"
 
-version = '0.3.0'
+version = '0.4.0'
 
 ext.isSnapshot = version.endsWith("SNAPSHOT")
 
@@ -39,11 +43,17 @@ dependencies {
     testCompile 'com.github.jengelman.gradle.plugins:gradle-test-kit:0.3'
 }
 
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
 
 if (file("../publish.gradle").exists()) {
     apply from: "../publish.gradle"
+}
+
+bintray {
+    pkg {
+        name = "gradle-process-plugin"
+    }
 }
 //apply from: file('gradle/docs.gradle')
 //apply from: file('gradle/publishing.gradle')
