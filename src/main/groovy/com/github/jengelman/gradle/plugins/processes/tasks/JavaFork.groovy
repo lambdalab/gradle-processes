@@ -62,6 +62,12 @@ class JavaFork extends ConventionTask implements JavaExecSpec {
     }
 
     @Override
+    JavaExecSpec setArgs(List<String> list) {
+        forkAction.setArgs(list)
+        return this
+    }
+
+    @Override
     JavaFork setArgs(Iterable<?> objects) {
         forkAction.setArgs(objects)
         return this
@@ -191,6 +197,11 @@ class JavaFork extends ConventionTask implements JavaExecSpec {
     }
 
     @Override
+    void setJvmArgs(List<String> list) {
+        forkAction.setJvmArgs(list)
+    }
+
+    @Override
     void setJvmArgs(Iterable<?> objects) {
         forkAction.setJvmArgs(objects)
     }
@@ -249,6 +260,11 @@ class JavaFork extends ConventionTask implements JavaExecSpec {
     }
 
     @Override
+    void setAllJvmArgs(List<String> list) {
+        forkAction.setAllJvmArgs(list)
+    }
+
+    @Override
     void setAllJvmArgs(Iterable<?> objects) {
         forkAction.setAllJvmArgs(objects)
     }
@@ -265,6 +281,11 @@ class JavaFork extends ConventionTask implements JavaExecSpec {
     }
 
     @Override
+    void setExecutable(String s) {
+        forkAction.setExecutable(s)
+    }
+
+    @Override
     void setExecutable(Object o) {
         forkAction.setExecutable(o)
     }
@@ -278,6 +299,11 @@ class JavaFork extends ConventionTask implements JavaExecSpec {
     @Override
     File getWorkingDir() {
         return forkAction.workingDir
+    }
+
+    @Override
+    void setWorkingDir(File file) {
+        forkAction.setWorkingDir(file)
     }
 
     @Override

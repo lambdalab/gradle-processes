@@ -19,7 +19,7 @@ plugins {
 
 apply plugin: "groovy"
 
-version = '0.5.0'
+version = '0.6.0'
 
 ext.isSnapshot = version.endsWith("SNAPSHOT")
 
